@@ -1,0 +1,19 @@
+<!doctype html>
+<!--Simple client that connects to a socket and communicates to it.-->
+<html>
+    <head>
+        <script src='/socket.io/socket.io.js'></script>
+        <script>
+            var socket = io.connect('http://localhost:8080');
+            socket.on('news', function (data) {
+                // Construct HTML item and add into the HTML document
+                var html = '<p>' + data.news + '</p>';
+                document.getElementById('output').innerHTML = html;
+                socket.emit('echo', {back: data.news}) // Echo the received message back to the server
+            });
+        </script>
+    </head>
+    <body>
+        <div id='output'></>
+    </body>
+<html>
