@@ -1,14 +1,10 @@
 //gameState.js
-//this will handle the main game state
 
 gameState = gamvas.State.extend({
     init: function(){
         this.size = {w:screen.width,h:screen.height};
         this.camera.position.x = this.size.w/2.0;
         this.camera.position.y = this.size.h/2.0;
-        this.pressedKeys = [];
-        this.ships = [];
-        this.shipIDs = {};
 		this.clickCount = 0;
 		gamvas.socket.on('connected', function(data){
 			gamvas.socket.id = data.id;
@@ -21,17 +17,9 @@ gameState = gamvas.State.extend({
     enter: function(){
         console.log("entered state");
     },
-    onMouseDown: function(button, x, y, ev){
-    },
-    onMouseMove: function(x, y){
-    },
     onMouseUp: function(button, x, y, ev){
-        //if(button === gamvas.mouse.RIGHT){
         gamvas.socket.emit('click', {});
-		this.clickCount++;
-        //}
-    },
-    preDraw: function(t){
+		this.clickCount++; //update immediately
     },
     draw: function(t){
         this.c.fillStyle="#000000";
@@ -41,7 +29,10 @@ gameState = gamvas.State.extend({
 		drawCenteredText(this.c, "Click count: "+this.clickCount, this.size.w/2.0, this.size.h/2.0);
 		this.c.fillStyle = "#FFFFFF";
     },
-    postDraw: function(t){
-
-    }
 });
+
+function drawCenteredText(context, text, x, y){
+	var size = context.measureText(text);
+	var cx = x-(size.width/2.0);
+	context.fillText(text, cx, y);
+}
