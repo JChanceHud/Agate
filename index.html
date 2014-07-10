@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
+		<style>
+			<!--
+				//css that fills the page with the body
+				//we had a problem before where we had nasty borders around the gamvas frame
+			-->
             html {width: 100%; height: 100%; margin: 0px;}
             body {width: 100%; height: 100%; margin: 0px; overflow: hidden;}
         </style>
-        <title>Agate</title>
+		<title>Agate</title>
+		<!--
+			include the various javascript files
+		-->
         <script src="gamvas/js/gamvas.js"></script>
         <script src="js/client.js"></script>
-        <script src="js/client_config.js"></script>
+		<script src="js/client_config.js"></script>
+		<!--
+		for the gamestate file we had an issue where it wouldn't work when added
+		just using a script block like above, so we manually load it using a function
+		defined in the client.js file
+		-->
         <script>
             loadFile("js/gameState.js");
-        </script>
+		</script>
+		<!--
+		again, loading the socket.io js file didn't work with the normal script block
+		so loaded dynamically using js code
+		-->
         <script type="text/javascript">
             var file = document.createElement("script");
             var path = ip.concat("/socket.io/socket.io.js");
@@ -19,7 +35,8 @@
             document.getElementsByTagName("head")[0].appendChild(file);
         </script>
     </head>
-    <body>
+	<body>
+		<!-- the div object for the gamvas view -->
         <div id="container" style="width: 100%; height: 100%; margin: 0px">
             <canvas id="gameCanvas" style="margin: 0px"></canvas>
         </div>
