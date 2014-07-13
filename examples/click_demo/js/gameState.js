@@ -15,7 +15,8 @@ gameState = gamvas.State.extend({
 			//keep track of our client id, this is given by the server
 			//it's not used for anything right now, but is generally useful
 			gamvas.socket.id = data.id;
-			console.log('connected');
+            gamvas.socket.localClicks = 0;
+			console.log("connected");
 		}.bind(this));
 
 		//function that is called when receiving the update message
@@ -24,6 +25,7 @@ gameState = gamvas.State.extend({
 			//update function, this data object has two variable, clickCount
 			//and clientCount, although we only use clickCount right now
 			this.clickCount = data.clickCount;
+            gamvas.socket.localClicks++;
         }.bind(this));
     },
     enter: function(){
@@ -44,9 +46,10 @@ gameState = gamvas.State.extend({
 		//draws using html canvas commands, lots of documentation online
         this.c.fillStyle="#000000";
         this.c.fillRect(0,0,this.size.w, this.size.h);
-		this.c.font = "30px Arial";
+		this.c.font = "20px Arial";
 		this.c.fillStyle = "#00FF00";
 		drawCenteredText(this.c, "Click count: "+this.clickCount, this.size.w/2.0, this.size.h/2.0);
+		drawCenteredText(this.c, gamvas.socket.id + ": " + gamvas.socket.localClicks, this.size.w/4, this.size.h/5);
 		this.c.fillStyle = "#FFFFFF";
     },
 });

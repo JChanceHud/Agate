@@ -4,10 +4,13 @@
 Date:
 Error message:
 Replication details:
+Resolution:
 ##################
 
 
 ####Unresolved
+
+####Resolved
 
 Date: 6/12
 Error message:
@@ -33,6 +36,8 @@ Run node server.js.
 Open index.html.
 Server closes, web document still counts clicks.
 
-#############
+Resolution:
+Circular reference in the Object containing all of the connected clients was being emitted as data with an event from server.js to the client, resulting in a JSON object that was impossible to convert into a string.
+Changed the emitted data into a simple count of the number of connections. Didn't affect anything because this data was unused anywhere else.
 
-####Resolved
+#############

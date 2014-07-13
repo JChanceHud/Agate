@@ -1,7 +1,7 @@
 Table of contents
     0. Table of contents
     1. High-level description
-    2. Most important objects
+    2. Important objects
 
 1. High-level description
     Server
@@ -9,8 +9,9 @@ Table of contents
         Creates and distributes files that tell user accounts how the game world affects them individually
     Client
         Holds individual modifiers/adjustments that are applied on top of whole-game-world modifiers and multipliers
+        Maintains the GUI
 
-2. Most important objects
+2. Important objects
     Account
         Early on: Linked to a single client sesion. Later, linked to an actual login account.
         Linked to MySQL entry
@@ -23,5 +24,4 @@ Table of contents
         One for each game, and one for overall.
         Each contains a series of leaderboards for records set by individuals.
         (?) Replacement for archived game states, including only the top-level achievements of that game
-        (?) Each individual record list can be maintained as a binary heap that knows its minimum.
-
+        Each individual record list can be maintained as a sorted array

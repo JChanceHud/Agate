@@ -38,7 +38,7 @@ io.sockets.on('connection', function (socket){
 //update function that sends out the total number of clicks to all the clients
 function sendUpdate(){
 	//get the total number of clients
-    var count = io.sockets.clients();
+    var count = io.sockets.clients().length;
 
 	//io is the name of the socket.io object and sockets is an array
 	//of all connected clients, when you call io.sockets.emit it sends
