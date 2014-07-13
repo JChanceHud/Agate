@@ -1,0 +1,27 @@
+Table of contents
+    0. Table of contents
+    1. High-level description
+    2. Most important objects
+
+1. High-level description
+    Server
+        Server javascript file serves a client HTML document so we can get to everything by visiting localhost:PORT_NUMBER.
+        Creates and distributes files that tell user accounts how the game world affects them individually
+    Client
+        Holds individual modifiers/adjustments that are applied on top of whole-game-world modifiers and multipliers
+
+2. Most important objects
+    Account
+        Early on: Linked to a single client sesion. Later, linked to an actual login account.
+        Linked to MySQL entry
+    Game
+        Can be an active game, or an archive of a past game.
+        Includes a game world, which holds all attributes of the world as relevant for the game. Buildings built, total resources harvested, etc.
+        Encapsulates everything about a game world. Includes buildings built,
+    Resource
+    Leaderboard collection
+        One for each game, and one for overall.
+        Each contains a series of leaderboards for records set by individuals.
+        (?) Replacement for archived game states, including only the top-level achievements of that game
+        (?) Each individual record list can be maintained as a binary heap that knows its minimum.
+
