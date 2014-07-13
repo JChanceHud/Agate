@@ -1,0 +1,38 @@
+####Template
+
+##################
+Date:
+Error message:
+Replication details:
+##################
+
+
+####Unresolved
+
+Date: 6/12
+Error message:
+connections property is deprecated. Use getConnections() method
+
+/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/parser.js:75
+      data = JSON.stringify(ev);
+                  ^
+TypeError: Converting circular structure to JSON
+    at Object.stringify (native)
+    at Object.exports.encodePacket (/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/parser.js:75:19)
+    at SocketNamespace.packet (/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/namespace.js:154:23)
+    at SocketNamespace.emit (/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/namespace.js:188:15)
+    at sendUpdate (/home/eric/Documents/projects/Agate/server/server.js:47:16)
+    at SocketNamespace.<anonymous> (/home/eric/Documents/projects/Agate/server/server.js:35:2)
+    at SocketNamespace.emit [as $emit] (events.js:117:20)
+    at connect (/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/namespace.js:292:10)
+    at /home/eric/Documents/projects/Agate/node_modules/socket.io/lib/namespace.js:308:13
+    at SocketNamespace.authorize (/home/eric/Documents/projects/Agate/node_modules/socket.io/lib/namespace.js:252:5)
+
+Replication details:
+Run node server.js.
+Open index.html.
+Server closes, web document still counts clicks.
+
+#############
+
+####Resolved
