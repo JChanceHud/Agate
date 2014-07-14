@@ -6,6 +6,8 @@
 //
 
 var io = require('socket.io').listen(8080);
+var app = require('express')();
+var http = require('http').Server(app);
 io.set('log level', 1);
 
 //variable that tracks the total number of clicks receive from clients
@@ -47,3 +49,11 @@ function sendUpdate(){
     io.sockets.emit('update', {clientCount:count,clickCount:clicks});
 }
 
+
+app.get('/', function(req, res){
+  res.sendfile('index.html');
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
